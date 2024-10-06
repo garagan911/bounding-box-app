@@ -1,0 +1,49 @@
+<div class="container">
+  <h1>Mini app "Add logo"</h1>
+
+  <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+
+  <div class="inputs">
+    <h2>Parameters:</h2>
+    <label>
+      X:
+      <input type="number" [(ngModel)]="box.x" />
+    </label>
+    <label>
+      Y:
+      <input type="number" [(ngModel)]="box.y" />
+    </label>
+    <label>
+      Width:
+      <input type="number" [(ngModel)]="box.width" />
+    </label>
+    <label>
+      Height:
+      <input type="number" [(ngModel)]="box.height" />
+    </label>
+  </div>
+
+  <div class="frame-container" #frameContainer>
+    <div
+      class="frame"
+      mwlResizeHandle
+      [resizeEdges]="{ bottom: true, right: true }"
+      mwlResizable
+      [validateResize]="validateResize"
+      [enableGhostResize]="true"
+      (resizeEnd)="onResizeEnd($event)"
+      [resizeSnapGrid]="{ left: 10, right: 10, top: 10, bottom: 10 }"
+      [resizeCursors]="{
+        topLeft: 'nw-resize',
+        topRight: 'ne-resize',
+        bottomLeft: 'sw-resize',
+        bottomRight: 'se-resize',
+        leftOrRight: 'e-resize',
+        topOrBottom: 'n-resize'
+      }"
+      [ngStyle]="frameStyle"
+    >
+      <img *ngIf="imageSrc" [src]="imageSrc" [ngStyle]="imageStyle"  alt="logo"/>
+    </div>
+  </div>
+</div>
