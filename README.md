@@ -20,4 +20,4 @@ This Angular application allows users to load an image and place it inside a fra
  https://github.com/garagan911/bounding-box-app.git
  cd bounding-box-app
  npm install
- ng-serve
+ ng serve
